@@ -1,5 +1,5 @@
 // ** Router Components
-import { BrowserRouter as AppRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as AppRouter, Route, Routes } from 'react-router-dom';
 import HomePage from '../views/home';
 
 const Router = () => {
