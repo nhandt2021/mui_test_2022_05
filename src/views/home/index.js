@@ -138,6 +138,7 @@ const HomePage = () => {
                 onClick={() => openNewTab(item?.node?.path)}
               >
                 <Grid
+                  item
                   md={4}
                   xs={12}
                   sx={{
@@ -156,7 +157,7 @@ const HomePage = () => {
                     />
                   </Item>
                 </Grid>
-                <Grid md={8} xs={12}>
+                <Grid item md={8} xs={12}>
                   <Item sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                       <Typography component="div" variant="h5">
