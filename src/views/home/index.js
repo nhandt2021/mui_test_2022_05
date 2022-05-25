@@ -12,8 +12,15 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AccountCircle } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
 import { API_URL, DOMAIN_NAME } from '../../constants/common';
+
+const Item = styled(Box)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  color: theme.palette.text.secondary,
+}));
 
 const HomePage = () => {
   HomePage.propTypes = {};
@@ -123,12 +130,12 @@ const HomePage = () => {
           scrollableTarget="scrollableDiv"
           scrollThreshold={0.7}
         >
-          {data?.map((item) => (
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {data?.map(item => (
+            <div key={item?.node?.nid} style={{ display: 'flex', justifyContent: 'center' }}>
               <Grid
                 container
                 sx={{ width: 'calc(100vw - 100px)', cursor: 'pointer' }}
-                onClick={() => openNewTab(item.node.path)}
+                onClick={() => openNewTab(item?.node?.path)}
               >
                 <Grid
                   md={4}
@@ -140,17 +147,17 @@ const HomePage = () => {
                     marginBottom: 5,
                   }}
                 >
-                  <Box>
+                  <Item>
                     <CardMedia
                       component="img"
                       sx={{ width: 250, height: 180, borderRadius: 8 }}
                       image={`${DOMAIN_NAME}/${item?.node?.field_photo_image_section}`}
                       alt="Live from space album cover"
                     />
-                  </Box>
+                  </Item>
                 </Grid>
                 <Grid md={8} xs={12}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <Item sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                       <Typography component="div" variant="h5">
                         {item.node.title}
@@ -161,11 +168,17 @@ const HomePage = () => {
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        pl: 1,
-                        pb: 1,
+                        padding: 2,
                       }}
-                    ></Box>
-                  </Box>
+                    >
+                      {new Date().toLocaleDateString(undefined, {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </Box>
+                  </Item>
                 </Grid>
               </Grid>
             </div>
