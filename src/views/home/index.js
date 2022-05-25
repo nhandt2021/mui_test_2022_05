@@ -13,6 +13,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AccountCircle } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 
 import { API_URL, DOMAIN_NAME } from '../../constants/common';
 
@@ -22,8 +23,20 @@ const Item = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const useStyles = makeStyles(theme => ({
+  image: { borderRadius: 15, height: 'auto', width: '100% !important'},
+  flexCenter: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}));
+
 const HomePage = () => {
   HomePage.propTypes = {};
+
+  // Material classes
+  const classes = useStyles();
 
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
@@ -134,31 +147,19 @@ const HomePage = () => {
             <div key={item?.node?.nid} style={{ display: 'flex', justifyContent: 'center' }}>
               <Grid
                 container
-                sx={{ width: 'calc(100vw - 100px)', cursor: 'pointer' }}
+                sx={{ width: 'calc(100vw - 100px)', cursor: 'pointer', marginBottom: 5 }}
                 onClick={() => openNewTab(item?.node?.path)}
               >
-                <Grid
-                  item
-                  md={4}
-                  xs={12}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginBottom: 5,
-                  }}
-                >
-                  <Item>
-                    <CardMedia
-                      component="img"
-                      sx={{ width: 250, height: 180, borderRadius: 6 }}
-                      image={`${DOMAIN_NAME}/${item?.node?.field_photo_image_section}`}
-                      alt="Live from space album cover"
-                    />
-                  </Item>
+                <Grid item xs={4} classes={{ root: classes.flexCenter }}>
+                  <CardMedia
+                    component="img"
+                    className={classes.image}
+                    image={`${DOMAIN_NAME}/${item?.node?.field_photo_image_section}`}
+                    alt="Live from space album cover"
+                  />
                 </Grid>
-                <Grid item md={8} xs={12}>
-                  <Item sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Grid item xs={8}>
+                  <Item classes={{ root: classes.flexCenter }} sx={{ flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                       <Typography component="div" variant="h5">
                         {item.node.title}
