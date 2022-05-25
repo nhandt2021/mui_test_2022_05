@@ -24,7 +24,7 @@ const Item = styled(Box)(({ theme }) => ({
 }));
 
 const useStyles = makeStyles(theme => ({
-  image: { borderRadius: 15, height: 250, width: '100% !important', objectFit: 'fill !important' },
+  image: { borderRadius: 15, objectFit: 'fill !important' },
   flexCenter: {
     display: 'flex',
     justifyContent: 'center',
