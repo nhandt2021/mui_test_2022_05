@@ -11,6 +11,11 @@ code {
 }
 
 #scrollableDiv {
+  overflow: hidden;
+  height: calc(100vh - 64px);
+}
+
+#scrollableDiv:hover {
   overflow: auto;
   height: calc(100vh - 64px);
 }
