@@ -82,7 +82,7 @@ const HomePage = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Photos
+              Media Display
             </Typography>
             <div>
               <IconButton
@@ -150,7 +150,7 @@ const HomePage = () => {
                   <Item>
                     <CardMedia
                       component="img"
-                      sx={{ width: 250, height: 180, borderRadius: 8 }}
+                      sx={{ width: 250, height: 180, borderRadius: 6 }}
                       image={`${DOMAIN_NAME}/${item?.node?.field_photo_image_section}`}
                       alt="Live from space album cover"
                     />
