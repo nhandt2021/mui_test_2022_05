@@ -12,6 +12,7 @@ code {
 
 #scrollableDiv {
   overflow: auto;
+  height: calc(100vh - 64px);
 }
 
 .infinite-scroll-component__outerdiv {
